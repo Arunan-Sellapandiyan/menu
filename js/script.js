@@ -24,7 +24,7 @@ const data =
       },
       {
         name: "Eternal Flame",
-        "age": 1000000,
+        age: 1000000,
         "secretIdentity": "Unknown",
         "powers": [
           "Immortality",
