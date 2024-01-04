@@ -1,4 +1,3 @@
-import './App.css';
 const pizzaData = [
   {
     name: "Focaccia",
@@ -43,17 +42,3 @@ const pizzaData = [
     soldOut: false,
   },
 ];
-
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src='pizzas/focaccia.jpg'  alt="logo" />
-        <h1>Pizza</h1>
-      </header>
-    </div>
-  );
-}
-
-export default App;
