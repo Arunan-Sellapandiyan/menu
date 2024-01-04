@@ -51,9 +51,27 @@ function App() {
       <header className="App-header">
         <img src='pizzas/focaccia.jpg'  alt="logo" />
         <h1>Pizza</h1>
+        <Header/>
+        <Menu/>
+        <Footer/>
       </header>
     </div>
   );
 }
+function Header(){
+  return <h1>Header</h1>
+} 
+function Menu(){
+  const list=pizzaData.map(e=>{
+    return [e.name]
+  })
+  return <div> <h1>{list.name}</h1>
+  <h1>{list}</h1>
+  </div>
+} 
+function Footer(){
+  return <h1>Footer</h1>
+}
+
 
 export default App;
