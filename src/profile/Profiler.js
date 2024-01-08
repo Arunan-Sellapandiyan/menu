@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css';
 import focaccia from './focaccia.jpg'
 import List from './List';
-import Skill from './Skill';
+
 
 
 export default function Profiler() {
