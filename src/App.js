@@ -1,5 +1,6 @@
 // import './index.css';
 
+import List from "./profile/List";
 import Profiler from "./profile/Profiler";
 
 const pizzaData = [
@@ -50,9 +51,11 @@ const pizzaData = [
 
 function App() {
   return (
-    <div className="container">
+    <div className='container'>
         
-        <Profiler />
+        <Profiler   />
+       {/* <List  name='abc'/> */}
+    
         {/* <Header/>
         <Menu/>
         <Footer/> */}
