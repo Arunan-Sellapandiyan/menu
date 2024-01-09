@@ -1,4 +1,4 @@
-import './index.css';
+import "./index.css";
 
 // import List from "./profile/List";
 // import Profiler from "./profile/Profiler";
@@ -48,65 +48,100 @@ const pizzaData = [
   },
 ];
 
-
 function App() {
   return (
-    <div className='container'>
-        
-        {/* <Profiler   />
+    <div className="container">
+      {/* <Profiler   />
        <List  name='abc'/> */}
-    
-        <Header/>
-        <Menu />
-        <Footer/>
+
+      <Header />
+      <Menu />
+      <Footer />
     </div>
     //  <img src='pizzas/focaccia.jpg'  alt="logo" />
   );
 }
-function Header(){
-  return <header className="header"><h1>Pizza</h1></header>
-} 
-function Menu(){
-  // const List= pizzaData.map((e)=>e.name)
- 
-    return (<main className='menu'>
+function Header() {
+  return (
+    <header className="header">
+      <h1>Pizza</h1>
+    </header>
+  );
+}
+function Menu() {
+  const Pizzas = pizzaData;
+  const pizzano = Pizzas.length;
+
+  return (
+    <main className="menu">
       <h2>Our Menu</h2>
-      <div className='pizzas'>{pizzaData.map((pizza)=>(//rendering method with intermediate
-      // <Pizza name={pizza.name} photoName={pizza.photoName}/>
-      // <Pizza pizzaobj={pizza}/>
-     
-      //without intermediate
-        <div className="pizza">
-        <img src={pizza.photoName} alt={pizza.name}/>
-        <h3>{pizza.name}</h3>
-        <p>{pizza.ingredients}</p>
-        <span>{pizza.price}</span>
-      
+      {/* //conditional rendering */}
+      {pizzano !== 0 ? (
+        <div className="pizzas">
+          {pizzaData.map((pizza) => (
+            //rendering method with intermediate
+            (<>
+            <Pizza pizzaobj={pizza}/>
+            </>)
+
+            //without intermediate
+            // <div className="pizza">
+            //   <img src={pizza.photoName} alt={pizza.name} />
+            //   <h3>{pizza.name}</h3>
+            //   <p>{pizza.ingredients}</p>
+            //   <span>{pizza.price}</span>
+            // </div>
+          ))}
         </div>
-         ))}</div>
-        
+      ) : (
+        <p>currently working on it</p>
+      )}
+
       {/* <img src='pizzas/focaccia.jpg'  alt="logo" />  */}
       {/* <h2 className='menu'>{List}</h2>  */}
-      </main>
-)
-} 
-function Pizza(props){
-console.log(props);
-  return(<></>
-    // <div className="pizza">
-    //   <img src={props.pizzaobj.photoName} alt={props.pizzaobj.name}/>
-    //   <h3>{props.pizzaobj.name}</h3>
-    //   <p>{props.pizzaobj.ingredients}</p>
-    //   <span>{props.pizzaobj.price}</span>
-    
-    //   </div>
-  )
+    </main>
+  );
 }
-function Footer(){
-  return <><h1 className="footer">Footer</h1>
-
-      </>
+// props==pizzaobj ----props Destructure.
+function Pizza({pizzaobj}) {
+  // if (pizzaobj.soldOut) return null;
+  console.log(pizzaobj);
+  return (
+    <div className={`pizza ${pizzaobj.soldOut? "sold-out":""}`}>
+      <img src={pizzaobj.photoName} alt={pizzaobj.name} />
+      <h3>{pizzaobj.name}</h3>
+      <p>{pizzaobj.ingredients}</p>
+      {/* {pizzaobj.soldOut? ("SOLD OUT"):(pizzaobj.price) } */}
+      <span>{pizzaobj.soldOut? "SOLD OUT":(pizzaobj.price)}</span>
+    </div>
+  );
 }
-
+function Footer() {
+  const hour = new Date().getHours();
+  const openTime = 10;
+  const closedTime = 22;
+  const isOpen = hour >= openTime && hour <= closedTime;
+  console.log(isOpen);
+  return (
+    <footer className="footer">
+      {/* Rendering using Ternary operator */}
+      {isOpen ? (
+        <Order openTime={openTime} closedTime={closedTime} />
+      ) : (
+        <p> shop is closed because time is Greaterthan {closedTime}</p>
+      )}
+    </footer>
+  );
+}
+function Order(props) {
+  return (
+    <div className="order">
+      <p>
+        open time is {props.openTime} and closed time is {props.closedTime}
+      </p>
+      <button className="btn">Order now</button>
+    </div>
+  );
+}
 
 export default App;
