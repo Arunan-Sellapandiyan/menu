@@ -1,8 +1,9 @@
-import Route from "./Pizza/Route";
+
+import Step from "./steps/Step";
 // import "./index.css";
 function App() {
   return (<>
-  <Route />
+  <Step/>
   </>
    
   );
