@@ -2,50 +2,75 @@ import { useState, useEffect } from "react";
 
 export default function SamDate() {
   const [count, setCount] = useState(0);
-  const[step,setStep]=useState(1);
+  const [step, setStep] = useState(1);
   const [date, setDate] = useState(new Date(" 20  Nov 2020"));
 
   useEffect(() => {
     const newDate = new Date("20 Nov 2020");
-    newDate.setDate(newDate.getDate() +count);
+    newDate.setDate(newDate.getDate() + count);
     setDate(newDate);
-  },[count] );
-
+  }, [count]);
+  function handleStepChange(e) {
+    setStep(Number(e.target.value));
+  }
+  function handleCountChange(e) {
+    setCount(Number(e.target.value));
+  }
   function decre() {
-    setCount((c) => (c - step));
+    setCount((c) => c - step);
   }
 
   function incre() {
     setCount((c) => c + step);
   }
-  function decr() {
-    setStep((s) => s - 1);
-  }
+  // function decr() {
+  //   setStep((s) => s - 1);
+  // }
 
-  function incr() {
-    setStep((s) => s+ 1);
-  }
-
- 
+  // function incr() {
+  //   setStep((s) => s + 1);
+  // }
 
   return (
     <>
-     <div>
-        <button onClick={decr}>-</button>
-        <div>count: {step}</div>
-        <button onClick={incr}>+</button>
+      <div>
+        <input
+          type="range"
+          min="0"
+          max="10"
+          value={step}
+          onChange={handleStepChange}
+        />
+
+        <span>Step:{step}</span>
       </div>
+      {/* <div>
+        <button  onClick={decr} >-</button>
+        <div>step: {step}</div>
+        <button onClick={incr}>+</button>
+      </div> */}
+
       <div>
         <button onClick={decre}>-</button>
-        <div>count: {count}</div>
+        <div>
+          <input
+            type="number"
+            value={count}
+            onChange={handleCountChange}
+          />
+          {/* <div>count:{count}</div> */}
+        </div>
         <button onClick={incre}>+</button>
       </div>
-     
+
       <p>
-        <span>{count === 0?"Today is "
-        :count>0
-        ?`${count} days from  is `
-        : `${Math.abs(count)} days ago was`}</span>
+        <span>
+          {count === 0
+            ? "Today is "
+            : count > 0
+            ? `${count} days from  is `
+            : `${Math.abs(count)} days ago was`}
+        </span>
         <span>{date.toDateString()}</span>
       </p>
     </>
