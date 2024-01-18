@@ -1,24 +1,20 @@
 import React, { useState } from 'react'
 import List from './List';
 
-const initialItems = [
-    { id: 1, description: "Passports", quantity: 2, packed: false },
-    { id: 2, description: "Socks", quantity: 12, packed: false },
-    { id: 3, description: "buds", quantity: 12, packed:true }
-  ];
+// const initialItems = [
+//     { id: 1, description: "Passports", quantity: 2, packed: false },
+//     { id: 2, description: "Socks", quantity: 12, packed: false },
+//     { id: 3, description: "buds", quantity: 12, packed:true }
+//   ];
 
 
-export default function Display() {
-  const [items, setItems] = useState(initialItems);
-
-  function handleDelete(id) {
-    const updatedItems = items.filter((item) => item.id !== id);
-
-    setItems(updatedItems);
-  }
+export default function Display({items}) {
+  // const [items, setItems] = useState(initialItems);
+    
+  
   return (
     <div className='list'>
-      <ul> {initialItems.map((item)=> (<List item={item} key={item.id} onDelete={handleDelete}/>))
+      <ul> {items.map((item)=> (<List item={item} key={item.id}/>))
         }
       </ul>
     </div>

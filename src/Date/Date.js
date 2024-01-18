@@ -16,6 +16,10 @@ export default function SamDate() {
   function handleCountChange(e) {
     setCount(Number(e.target.value));
   }
+  function Reset(){
+    setCount(0);
+    setStep(1);
+  }
   function decre() {
     setCount((c) => c - step);
   }
@@ -73,6 +77,8 @@ export default function SamDate() {
         </span>
         <span>{date.toDateString()}</span>
       </p>
+      {count !==0 || step !==1?
+      (<button onClick={Reset}>Reset</button>):null}
     </>
   );
 }

@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 
-export default function List({ item ,onDelete}) {
+export default function List({ item }) {
   const [isCheck, setIsCheck] = useState(item.packed);
   function handleCheckBox() {
     setIsCheck(!isCheck);
   }
-  function Delete(){
-   onDelete(item.id);
-  }
+  
   return (
     <li className="list">
       <input
@@ -17,11 +15,11 @@ export default function List({ item ,onDelete}) {
         
       />
       <span style={!isCheck === item.packed? { textDecoration: "line-through" } : {}}>
-        {item.quantity}
-        {item.description}
+        {item.quantity} 
+        {item.desc}
         
       </span>
-      <button onClick={Delete}>❌</button>
+      <button >❌</button>
     </li>
   );
 }

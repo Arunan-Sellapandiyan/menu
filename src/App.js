@@ -1,4 +1,5 @@
 import SamDate from "./Date/Date";
+import Route from "./Trip Plan/Route";
 
 
 
@@ -6,7 +7,7 @@ import SamDate from "./Date/Date";
 // import "./index.css";
 function App() {
   return (<>
- <SamDate />
+<Route /> 
   </>
    
   );
