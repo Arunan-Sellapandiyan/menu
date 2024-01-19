@@ -1,25 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function List({ item }) {
-  const [isCheck, setIsCheck] = useState(item.packed);
-  function handleCheckBox() {
-    setIsCheck(!isCheck);
-  }
+export default function List({ item ,onDelete,onCheckbox}) {
+ 
   
   return (
     <li className="list">
       <input
         type="checkbox"
-        checked={isCheck}
-        onChange={handleCheckBox}
+       
+        value={item.packed}
+        // onChange={handleCheckBox}
+        onChange={()=>onCheckbox(item.id)}
         
       />
-      <span style={!isCheck === item.packed? { textDecoration: "line-through" } : {}}>
-        {item.quantity} 
-        {item.desc}
+      <span style={ item.packed? { textDecoration: "line-through" } : {}}>
+        {item.quantity}    {item.desc}
+       
         
       </span>
-      <button >❌</button>
+      <button  onClick={()=>onDelete(item.id)}>❌</button>
     </li>
   );
 }

@@ -8,15 +8,31 @@ import List from './List';
 //   ];
 
 
-export default function Display({items}) {
-  // const [items, setItems] = useState(initialItems);
+export default function Display({items,onDelete,onCheckbox,Reset}) {
+  const [sort,setSort]=useState('input');
+  
+let sortItem=items;
+ 
+  if(sort === 'input') sortItem=items;
+  if(sort==='description') sortItem=items.slice().sort((a,b)=>a.description.localeCompare(b.description));
+  if(sort==='packed') sortItem=items.slice().sort((a,b)=>Number(b.packed)-Number(a.packed));
+
+
     
   
   return (
     <div className='list'>
-      <ul> {items.map((item)=> (<List item={item} key={item.id}/>))
+      <ul> {sortItem.map((item)=> (<List item={item}  onCheckbox={onCheckbox} onDelete={onDelete} key={item.id}/>))
         }
       </ul>
+      <div className='actions'>
+        <select value={sort} onChange={(e)=>setSort(e.target.value)}>
+          <option className='input' >sort by input</option>
+          <option className='description'>sort by Description</option>
+          <option className='packed'>sort by packed</option>
+        </select>
+        <button onClick={Reset}>Reset </button>
+      </div>
     </div>
   )
 }
