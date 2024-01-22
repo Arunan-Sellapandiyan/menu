@@ -1,8 +1,4 @@
-import SamDate from "./Date/Date";
-import Route from "./Trip Plan/Route";
-
-
-
+import Route from "./Split Bill/Route";
 
 // import "./index.css";
 function App() {
