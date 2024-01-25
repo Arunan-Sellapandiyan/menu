@@ -1,9 +1,10 @@
-import Route from "./Split Bill/Route";
+import SplitUpdate from "./Splitbilll update/split";
+
 
 // import "./index.css";
 function App() {
   return (<>
-<Route /> 
+<SplitUpdate/>
   </>
    
   );
